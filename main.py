@@ -18,9 +18,11 @@ def catch(path):
     
     request.body = request.data
     
+    curlified = curlify.to_curl(request)
+    curlified = re.sub("http(.*)/","%%REQUEST_URL%%",curlified)
+    curlified = re.sub("http(.*)/","%%REQUEST_URL%%",curlified)
     
-    
-    return re.sub("http(.*)/",repl="%%REQUEST_URL%%",string=curlify.to_curl(request)),200
+    return curlified,200
 
 
 app.waitress_serve(port=8000)
