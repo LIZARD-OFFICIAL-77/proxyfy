@@ -20,8 +20,8 @@ def catch(path):
     
     curlified = curlify.to_curl(request)
     curlified = re.sub("http(.*)\"","%%REQUEST_URL%%\"",curlified)
-    curlified = re.sub("http://(.*)\\s+","%%REQUEST_URL%%",curlified)
-    curlified = re.sub("https://(.*)\\+s","%%REQUEST_URL%%",curlified)
+    curlified = re.sub("http://(.*)","%%REQUEST_URL%%",curlified)
+    curlified = re.sub("https://(.*)","%%REQUEST_URL%%",curlified)
     
     return curlified,200
 
